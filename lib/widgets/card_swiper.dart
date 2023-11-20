@@ -15,7 +15,7 @@ class CardSwiper extends StatelessWidget {
     final teamsProvider = Provider.of<TeamsProvider>(context, listen: false);
 
     if (leagues.isEmpty) {
-      return Container(
+      return SizedBox(
         width: double.infinity,
         height: size.height * 0.5,
         child: const Center(

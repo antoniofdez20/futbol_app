@@ -83,12 +83,12 @@ class _TeamPoster extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details',
-                arguments: 'detalls team'),
+            onTap: () =>
+                Navigator.pushNamed(context, 'details', arguments: team),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(
-                placeholder: const AssetImage('assets/no-image.jpg'),
+                placeholder: const AssetImage('assets/loading.gif'),
                 image: NetworkImage(team.strTeamBadge),
                 width: 130,
                 height: 190,

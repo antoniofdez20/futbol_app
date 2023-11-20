@@ -4,5 +4,4 @@
   Després simplemenrt haurem de fer UN SOL import d'aquest fitxer.
 */
 export 'package:futbol_app/widgets/card_swiper.dart';
-export 'package:futbol_app/widgets/players_cards.dart';
 export 'package:futbol_app/widgets/teams_slider.dart';

@@ -63,11 +63,11 @@ class TeamsProvider extends ChangeNotifier {
     _selectedLeagueName = selectedLeague?.strLeague.replaceAll(" ", "_");
 
     await getOnDisplayTeams(_selectedLeagueName!);
-
-    notifyListeners();
   }
 
   Future<void> getOnDisplayTeams(String leagueName) async {
+    //print('Obtener equipos');
+
     var url = Uri.https(
         _baseUrl, 'api/v1/json/3/search_all_teams.php', {'l': leagueName});
 
@@ -76,5 +76,7 @@ class TeamsProvider extends ChangeNotifier {
     final teamsResponse = TeamsResponse.fromJson(result.body);
 
     ondisplayTeams = teamsResponse.teams;
+
+    notifyListeners();
   }
 }

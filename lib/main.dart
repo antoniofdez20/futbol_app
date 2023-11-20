@@ -3,9 +3,11 @@ import 'package:futbol_app/providers/teams_provider.dart';
 import 'package:futbol_app/screens/screens.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
+  const AppState({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -14,7 +16,7 @@ class AppState extends StatelessWidget {
           create: (_) => TeamsProvider(),
         )
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }

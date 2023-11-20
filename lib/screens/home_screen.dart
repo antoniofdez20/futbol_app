@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
               CardSwiper(leagues: leaguesProvider.ondisplayLeagues),
 
               // Slider dels equips de la lliga seleccionada
-              TeamsSlider(),
+              const TeamsSlider(),
             ],
           ),
         ),
