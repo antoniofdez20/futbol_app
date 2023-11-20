@@ -104,7 +104,7 @@ class _PosterAndTitile extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'Año fundación ${team.intFormedYear}',
+                  'Año fundación: ${team.intFormedYear}',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
@@ -116,7 +116,7 @@ class _PosterAndTitile extends StatelessWidget {
                 Text(
                   'Localización del estadio: ${team.strStadiumLocation}',
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
               ],
             ),
