@@ -31,10 +31,8 @@ class TeamsSlider extends StatelessWidget {
                 : ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: teams.length,
-                    itemBuilder: (_, int index) {
-                      final team = teams[index];
-                      return _TeamPoster(team: team);
-                    }),
+                    itemBuilder: (_, int index) =>
+                        _TeamPoster(team: teams[index])),
           )
         ],
       ),
