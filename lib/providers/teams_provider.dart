@@ -6,11 +6,13 @@ class TeamsProvider extends ChangeNotifier {
   final String _baseUrl = 'thesportsdb.com';
   List<League> ondisplayLeagues = [];
   List<Team> ondisplayTeams = [];
+  League? selectedLeague;
+  String?
+      _selectedLeagueName; //guardara el nombre de la liga adaptado para poder hacer la consulta correctamente a la api
 
   TeamsProvider() {
     //print('Teams provider inicialitzat');
     getOnDisplayLeagues();
-    getOnDisplayTeams();
   }
 
   getOnDisplayLeagues() async {
@@ -55,5 +57,24 @@ class TeamsProvider extends ChangeNotifier {
     }
   }
 
-  getOnDisplayTeams() async {}
+  void setSelectedLeague(League league) async {
+    selectedLeague = league;
+
+    _selectedLeagueName = selectedLeague?.strLeague.replaceAll(" ", "_");
+
+    await getOnDisplayTeams(_selectedLeagueName!);
+
+    notifyListeners();
+  }
+
+  Future<void> getOnDisplayTeams(String leagueName) async {
+    var url = Uri.https(
+        _baseUrl, 'api/v1/json/3/search_all_teams.php', {'l': leagueName});
+
+    final result = await http.get(url);
+
+    final teamsResponse = TeamsResponse.fromJson(result.body);
+
+    ondisplayTeams = teamsResponse.teams;
+  }
 }

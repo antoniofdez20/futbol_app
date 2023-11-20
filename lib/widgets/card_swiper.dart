@@ -1,5 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:futbol_app/providers/teams_provider.dart';
+import 'package:provider/provider.dart';
 import '../models/models.dart';
 
 class CardSwiper extends StatelessWidget {
@@ -10,6 +12,7 @@ class CardSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final teamsProvider = Provider.of<TeamsProvider>(context, listen: false);
 
     if (leagues.isEmpty) {
       return Container(
@@ -33,8 +36,9 @@ class CardSwiper extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final league = leagues[index];
             return GestureDetector(
-              onTap: () => Navigator.pushNamed(context, 'details',
-                  arguments: 'detalls peli'),
+              onTap: () {
+                teamsProvider.setSelectedLeague(league);
+              },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
